@@ -1,0 +1,5 @@
+package com.liangx.practice.booksystem.entity;
+
+public class User {
+
+}

@@ -1,0 +1,949 @@
+package com.liangx.practice.booksystem.entity;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+public class BookExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public BookExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andBookIdIsNull() {
+            addCriterion("book_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdIsNotNull() {
+            addCriterion("book_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdEqualTo(String value) {
+            addCriterion("book_id =", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotEqualTo(String value) {
+            addCriterion("book_id <>", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdGreaterThan(String value) {
+            addCriterion("book_id >", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdGreaterThanOrEqualTo(String value) {
+            addCriterion("book_id >=", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLessThan(String value) {
+            addCriterion("book_id <", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLessThanOrEqualTo(String value) {
+            addCriterion("book_id <=", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLike(String value) {
+            addCriterion("book_id like", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotLike(String value) {
+            addCriterion("book_id not like", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdIn(List<String> values) {
+            addCriterion("book_id in", values, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotIn(List<String> values) {
+            addCriterion("book_id not in", values, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdBetween(String value1, String value2) {
+            addCriterion("book_id between", value1, value2, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotBetween(String value1, String value2) {
+            addCriterion("book_id not between", value1, value2, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameIsNull() {
+            addCriterion("book_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameIsNotNull() {
+            addCriterion("book_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameEqualTo(String value) {
+            addCriterion("book_name =", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameNotEqualTo(String value) {
+            addCriterion("book_name <>", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameGreaterThan(String value) {
+            addCriterion("book_name >", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameGreaterThanOrEqualTo(String value) {
+            addCriterion("book_name >=", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameLessThan(String value) {
+            addCriterion("book_name <", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameLessThanOrEqualTo(String value) {
+            addCriterion("book_name <=", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameLike(String value) {
+            addCriterion("book_name like", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameNotLike(String value) {
+            addCriterion("book_name not like", value, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameIn(List<String> values) {
+            addCriterion("book_name in", values, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameNotIn(List<String> values) {
+            addCriterion("book_name not in", values, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameBetween(String value1, String value2) {
+            addCriterion("book_name between", value1, value2, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookNameNotBetween(String value1, String value2) {
+            addCriterion("book_name not between", value1, value2, "bookName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorIsNull() {
+            addCriterion("book_author is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorIsNotNull() {
+            addCriterion("book_author is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorEqualTo(String value) {
+            addCriterion("book_author =", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorNotEqualTo(String value) {
+            addCriterion("book_author <>", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorGreaterThan(String value) {
+            addCriterion("book_author >", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorGreaterThanOrEqualTo(String value) {
+            addCriterion("book_author >=", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorLessThan(String value) {
+            addCriterion("book_author <", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorLessThanOrEqualTo(String value) {
+            addCriterion("book_author <=", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorLike(String value) {
+            addCriterion("book_author like", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorNotLike(String value) {
+            addCriterion("book_author not like", value, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorIn(List<String> values) {
+            addCriterion("book_author in", values, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorNotIn(List<String> values) {
+            addCriterion("book_author not in", values, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorBetween(String value1, String value2) {
+            addCriterion("book_author between", value1, value2, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookAuthorNotBetween(String value1, String value2) {
+            addCriterion("book_author not between", value1, value2, "bookAuthor");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeIsNull() {
+            addCriterion("book_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeIsNotNull() {
+            addCriterion("book_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeEqualTo(String value) {
+            addCriterion("book_type =", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeNotEqualTo(String value) {
+            addCriterion("book_type <>", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeGreaterThan(String value) {
+            addCriterion("book_type >", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("book_type >=", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeLessThan(String value) {
+            addCriterion("book_type <", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeLessThanOrEqualTo(String value) {
+            addCriterion("book_type <=", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeLike(String value) {
+            addCriterion("book_type like", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeNotLike(String value) {
+            addCriterion("book_type not like", value, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeIn(List<String> values) {
+            addCriterion("book_type in", values, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeNotIn(List<String> values) {
+            addCriterion("book_type not in", values, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeBetween(String value1, String value2) {
+            addCriterion("book_type between", value1, value2, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTypeNotBetween(String value1, String value2) {
+            addCriterion("book_type not between", value1, value2, "bookType");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceIsNull() {
+            addCriterion("book_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceIsNotNull() {
+            addCriterion("book_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceEqualTo(BigDecimal value) {
+            addCriterion("book_price =", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceNotEqualTo(BigDecimal value) {
+            addCriterion("book_price <>", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceGreaterThan(BigDecimal value) {
+            addCriterion("book_price >", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("book_price >=", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceLessThan(BigDecimal value) {
+            addCriterion("book_price <", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("book_price <=", value, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceIn(List<BigDecimal> values) {
+            addCriterion("book_price in", values, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceNotIn(List<BigDecimal> values) {
+            addCriterion("book_price not in", values, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("book_price between", value1, value2, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("book_price not between", value1, value2, "bookPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressIsNull() {
+            addCriterion("book_press is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressIsNotNull() {
+            addCriterion("book_press is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressEqualTo(String value) {
+            addCriterion("book_press =", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressNotEqualTo(String value) {
+            addCriterion("book_press <>", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressGreaterThan(String value) {
+            addCriterion("book_press >", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressGreaterThanOrEqualTo(String value) {
+            addCriterion("book_press >=", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressLessThan(String value) {
+            addCriterion("book_press <", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressLessThanOrEqualTo(String value) {
+            addCriterion("book_press <=", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressLike(String value) {
+            addCriterion("book_press like", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressNotLike(String value) {
+            addCriterion("book_press not like", value, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressIn(List<String> values) {
+            addCriterion("book_press in", values, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressNotIn(List<String> values) {
+            addCriterion("book_press not in", values, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressBetween(String value1, String value2) {
+            addCriterion("book_press between", value1, value2, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPressNotBetween(String value1, String value2) {
+            addCriterion("book_press not between", value1, value2, "bookPress");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateIsNull() {
+            addCriterion("book_public_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateIsNotNull() {
+            addCriterion("book_public_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateEqualTo(Date value) {
+            addCriterionForJDBCDate("book_public_date =", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("book_public_date <>", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("book_public_date >", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("book_public_date >=", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateLessThan(Date value) {
+            addCriterionForJDBCDate("book_public_date <", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("book_public_date <=", value, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateIn(List<Date> values) {
+            addCriterionForJDBCDate("book_public_date in", values, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("book_public_date not in", values, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("book_public_date between", value1, value2, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPublicDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("book_public_date not between", value1, value2, "bookPublicDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberIsNull() {
+            addCriterion("book_total_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberIsNotNull() {
+            addCriterion("book_total_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberEqualTo(Integer value) {
+            addCriterion("book_total_number =", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberNotEqualTo(Integer value) {
+            addCriterion("book_total_number <>", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberGreaterThan(Integer value) {
+            addCriterion("book_total_number >", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("book_total_number >=", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberLessThan(Integer value) {
+            addCriterion("book_total_number <", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("book_total_number <=", value, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberIn(List<Integer> values) {
+            addCriterion("book_total_number in", values, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberNotIn(List<Integer> values) {
+            addCriterion("book_total_number not in", values, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberBetween(Integer value1, Integer value2) {
+            addCriterion("book_total_number between", value1, value2, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookTotalNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("book_total_number not between", value1, value2, "bookTotalNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberIsNull() {
+            addCriterion("book_current_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberIsNotNull() {
+            addCriterion("book_current_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberEqualTo(Integer value) {
+            addCriterion("book_current_number =", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberNotEqualTo(Integer value) {
+            addCriterion("book_current_number <>", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberGreaterThan(Integer value) {
+            addCriterion("book_current_number >", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("book_current_number >=", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberLessThan(Integer value) {
+            addCriterion("book_current_number <", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("book_current_number <=", value, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberIn(List<Integer> values) {
+            addCriterion("book_current_number in", values, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberNotIn(List<Integer> values) {
+            addCriterion("book_current_number not in", values, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberBetween(Integer value1, Integer value2) {
+            addCriterion("book_current_number between", value1, value2, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookCurrentNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("book_current_number not between", value1, value2, "bookCurrentNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateIsNull() {
+            addCriterion("book_purchase_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateIsNotNull() {
+            addCriterion("book_purchase_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateEqualTo(Date value) {
+            addCriterionForJDBCDate("book_purchase_date =", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("book_purchase_date <>", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("book_purchase_date >", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("book_purchase_date >=", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateLessThan(Date value) {
+            addCriterionForJDBCDate("book_purchase_date <", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("book_purchase_date <=", value, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateIn(List<Date> values) {
+            addCriterionForJDBCDate("book_purchase_date in", values, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("book_purchase_date not in", values, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("book_purchase_date between", value1, value2, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookPurchaseDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("book_purchase_date not between", value1, value2, "bookPurchaseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryIsNull() {
+            addCriterion("book_summary is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryIsNotNull() {
+            addCriterion("book_summary is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryEqualTo(String value) {
+            addCriterion("book_summary =", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryNotEqualTo(String value) {
+            addCriterion("book_summary <>", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryGreaterThan(String value) {
+            addCriterion("book_summary >", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryGreaterThanOrEqualTo(String value) {
+            addCriterion("book_summary >=", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryLessThan(String value) {
+            addCriterion("book_summary <", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryLessThanOrEqualTo(String value) {
+            addCriterion("book_summary <=", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryLike(String value) {
+            addCriterion("book_summary like", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryNotLike(String value) {
+            addCriterion("book_summary not like", value, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryIn(List<String> values) {
+            addCriterion("book_summary in", values, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryNotIn(List<String> values) {
+            addCriterion("book_summary not in", values, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryBetween(String value1, String value2) {
+            addCriterion("book_summary between", value1, value2, "bookSummary");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookSummaryNotBetween(String value1, String value2) {
+            addCriterion("book_summary not between", value1, value2, "bookSummary");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.LibraryCardMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.LibraryCard">
+    <constructor>
+      <idArg column="card_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="borrowed_book_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="card_created_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="card_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="card_logout_flg" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    card_id, borrowed_book_number, card_created_date, card_expiration_date, card_logout_flg
+  </sql>
+  <select id="selectByExample" parameterType="com.liangx.practice.booksystem.entity.LibraryCardExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from library_card
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from library_card
+    where card_id = #{cardId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from library_card
+    where card_id = #{cardId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liangx.practice.booksystem.entity.LibraryCardExample">
+    delete from library_card
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    insert into library_card (card_id, borrowed_book_number, card_created_date, 
+      card_expiration_date, card_logout_flg)
+    values (#{cardId,jdbcType=CHAR}, #{borrowedBookNumber,jdbcType=INTEGER}, #{cardCreatedDate,jdbcType=DATE}, 
+      #{cardExpirationDate,jdbcType=DATE}, #{cardLogoutFlg,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    insert into library_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="borrowedBookNumber != null">
+        borrowed_book_number,
+      </if>
+      <if test="cardCreatedDate != null">
+        card_created_date,
+      </if>
+      <if test="cardExpirationDate != null">
+        card_expiration_date,
+      </if>
+      <if test="cardLogoutFlg != null">
+        card_logout_flg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        #{cardId,jdbcType=CHAR},
+      </if>
+      <if test="borrowedBookNumber != null">
+        #{borrowedBookNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cardCreatedDate != null">
+        #{cardCreatedDate,jdbcType=DATE},
+      </if>
+      <if test="cardExpirationDate != null">
+        #{cardExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="cardLogoutFlg != null">
+        #{cardLogoutFlg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liangx.practice.booksystem.entity.LibraryCardExample" resultType="java.lang.Long">
+    select count(*) from library_card
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update library_card
+    <set>
+      <if test="record.cardId != null">
+        card_id = #{record.cardId,jdbcType=CHAR},
+      </if>
+      <if test="record.borrowedBookNumber != null">
+        borrowed_book_number = #{record.borrowedBookNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.cardCreatedDate != null">
+        card_created_date = #{record.cardCreatedDate,jdbcType=DATE},
+      </if>
+      <if test="record.cardExpirationDate != null">
+        card_expiration_date = #{record.cardExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="record.cardLogoutFlg != null">
+        card_logout_flg = #{record.cardLogoutFlg,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update library_card
+    set card_id = #{record.cardId,jdbcType=CHAR},
+      borrowed_book_number = #{record.borrowedBookNumber,jdbcType=INTEGER},
+      card_created_date = #{record.cardCreatedDate,jdbcType=DATE},
+      card_expiration_date = #{record.cardExpirationDate,jdbcType=DATE},
+      card_logout_flg = #{record.cardLogoutFlg,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    update library_card
+    <set>
+      <if test="borrowedBookNumber != null">
+        borrowed_book_number = #{borrowedBookNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cardCreatedDate != null">
+        card_created_date = #{cardCreatedDate,jdbcType=DATE},
+      </if>
+      <if test="cardExpirationDate != null">
+        card_expiration_date = #{cardExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="cardLogoutFlg != null">
+        card_logout_flg = #{cardLogoutFlg,jdbcType=CHAR},
+      </if>
+    </set>
+    where card_id = #{cardId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    update library_card
+    set borrowed_book_number = #{borrowedBookNumber,jdbcType=INTEGER},
+      card_created_date = #{cardCreatedDate,jdbcType=DATE},
+      card_expiration_date = #{cardExpirationDate,jdbcType=DATE},
+      card_logout_flg = #{cardLogoutFlg,jdbcType=CHAR}
+    where card_id = #{cardId,jdbcType=CHAR}
+  </update>
+</mapper>

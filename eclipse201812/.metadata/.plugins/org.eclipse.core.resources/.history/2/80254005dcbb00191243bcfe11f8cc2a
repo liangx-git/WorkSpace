@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Book">
+    <constructor>
+      <idArg column="book_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="book_author" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="book_press" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_public_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="book_total_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="book_current_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="book_purchase_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="book_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    book_id, book_name, book_author, book_type, book_price, book_press, book_public_date, 
+    book_total_number, book_current_number, book_purchase_date, book_summary
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where book_id = #{bookId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from book
+    where book_id = #{bookId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Book">
+    insert into book (book_id, book_name, book_author, 
+      book_type, book_price, book_press, 
+      book_public_date, book_total_number, book_current_number, 
+      book_purchase_date, book_summary)
+    values (#{bookId,jdbcType=CHAR}, #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=CHAR}, 
+      #{bookType,jdbcType=CHAR}, #{bookPrice,jdbcType=DECIMAL}, #{bookPress,jdbcType=CHAR}, 
+      #{bookPublicDate,jdbcType=DATE}, #{bookTotalNumber,jdbcType=INTEGER}, #{bookCurrentNumber,jdbcType=INTEGER}, 
+      #{bookPurchaseDate,jdbcType=DATE}, #{bookSummary,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="bookAuthor != null">
+        book_author,
+      </if>
+      <if test="bookType != null">
+        book_type,
+      </if>
+      <if test="bookPrice != null">
+        book_price,
+      </if>
+      <if test="bookPress != null">
+        book_press,
+      </if>
+      <if test="bookPublicDate != null">
+        book_public_date,
+      </if>
+      <if test="bookTotalNumber != null">
+        book_total_number,
+      </if>
+      <if test="bookCurrentNumber != null">
+        book_current_number,
+      </if>
+      <if test="bookPurchaseDate != null">
+        book_purchase_date,
+      </if>
+      <if test="bookSummary != null">
+        book_summary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        #{bookId,jdbcType=CHAR},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null">
+        #{bookAuthor,jdbcType=CHAR},
+      </if>
+      <if test="bookType != null">
+        #{bookType,jdbcType=CHAR},
+      </if>
+      <if test="bookPrice != null">
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPress != null">
+        #{bookPress,jdbcType=CHAR},
+      </if>
+      <if test="bookPublicDate != null">
+        #{bookPublicDate,jdbcType=DATE},
+      </if>
+      <if test="bookTotalNumber != null">
+        #{bookTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookCurrentNumber != null">
+        #{bookCurrentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookPurchaseDate != null">
+        #{bookPurchaseDate,jdbcType=DATE},
+      </if>
+      <if test="bookSummary != null">
+        #{bookSummary,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Book">
+    update book
+    <set>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null">
+        book_author = #{bookAuthor,jdbcType=CHAR},
+      </if>
+      <if test="bookType != null">
+        book_type = #{bookType,jdbcType=CHAR},
+      </if>
+      <if test="bookPrice != null">
+        book_price = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPress != null">
+        book_press = #{bookPress,jdbcType=CHAR},
+      </if>
+      <if test="bookPublicDate != null">
+        book_public_date = #{bookPublicDate,jdbcType=DATE},
+      </if>
+      <if test="bookTotalNumber != null">
+        book_total_number = #{bookTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookCurrentNumber != null">
+        book_current_number = #{bookCurrentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookPurchaseDate != null">
+        book_purchase_date = #{bookPurchaseDate,jdbcType=DATE},
+      </if>
+      <if test="bookSummary != null">
+        book_summary = #{bookSummary,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Book">
+    update book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_author = #{bookAuthor,jdbcType=CHAR},
+      book_type = #{bookType,jdbcType=CHAR},
+      book_price = #{bookPrice,jdbcType=DECIMAL},
+      book_press = #{bookPress,jdbcType=CHAR},
+      book_public_date = #{bookPublicDate,jdbcType=DATE},
+      book_total_number = #{bookTotalNumber,jdbcType=INTEGER},
+      book_current_number = #{bookCurrentNumber,jdbcType=INTEGER},
+      book_purchase_date = #{bookPurchaseDate,jdbcType=DATE},
+      book_summary = #{bookSummary,jdbcType=VARCHAR}
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Admin">
+    <constructor>
+      <idArg column="adm_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_name" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_password" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    adm_id, adm_name, adm_password
+  </sql>
+  <select id="selectByExample" parameterType="com.liangx.practice.booksystem.entity.AdminExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liangx.practice.booksystem.entity.AdminExample">
+    delete from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin (adm_id, adm_name, adm_password
+      )
+    values (#{admId,jdbcType=CHAR}, #{admName,jdbcType=CHAR}, #{admPassword,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=CHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liangx.practice.booksystem.entity.AdminExample" resultType="java.lang.Long">
+    select count(*) from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update admin
+    <set>
+      <if test="record.admId != null">
+        adm_id = #{record.admId,jdbcType=CHAR},
+      </if>
+      <if test="record.admName != null">
+        adm_name = #{record.admName,jdbcType=CHAR},
+      </if>
+      <if test="record.admPassword != null">
+        adm_password = #{record.admPassword,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update admin
+    set adm_id = #{record.admId,jdbcType=CHAR},
+      adm_name = #{record.admName,jdbcType=CHAR},
+      adm_password = #{record.admPassword,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=CHAR},
+      </if>
+    </set>
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    set adm_name = #{admName,jdbcType=CHAR},
+      adm_password = #{admPassword,jdbcType=CHAR}
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+</mapper>

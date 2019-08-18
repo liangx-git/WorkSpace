@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Admin">
+    <constructor>
+      <idArg column="adm_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_name" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_password" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    adm_id, adm_name, adm_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin (adm_id, adm_name, adm_password
+      )
+    values (#{admId,jdbcType=CHAR}, #{admName,jdbcType=CHAR}, #{admPassword,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=CHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=CHAR},
+      </if>
+    </set>
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    set adm_name = #{admName,jdbcType=CHAR},
+      adm_password = #{admPassword,jdbcType=CHAR}
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Admin">
+    <constructor>
+      <idArg column="adm_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_name" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_password" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    adm_id, adm_name, adm_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin (adm_id, adm_name, adm_password
+      )
+    values (#{admId,jdbcType=CHAR}, #{admName,jdbcType=CHAR}, #{admPassword,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=CHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=CHAR},
+      </if>
+    </set>
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    set adm_name = #{admName,jdbcType=CHAR},
+      adm_password = #{admPassword,jdbcType=CHAR}
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Admin">
+    <constructor>
+      <idArg column="adm_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_name" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="adm_password" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    adm_id, adm_name, adm_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin
+    where adm_id = #{admId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin (adm_id, adm_name, adm_password
+      )
+    values (#{admId,jdbcType=CHAR}, #{admName,jdbcType=CHAR}, #{admPassword,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=CHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=CHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=CHAR},
+      </if>
+    </set>
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Admin">
+    update admin
+    set adm_name = #{admName,jdbcType=CHAR},
+      adm_password = #{admPassword,jdbcType=CHAR}
+    where adm_id = #{admId,jdbcType=CHAR}
+  </update>
+</mapper>

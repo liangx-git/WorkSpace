@@ -1,0 +1,17 @@
+package com.liangx.practice.booksystem.mapper;
+
+import com.liangx.practice.booksystem.entity.User;
+
+public interface UserMapper {
+    int deleteByPrimaryKey(String userId);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(String userId);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+}

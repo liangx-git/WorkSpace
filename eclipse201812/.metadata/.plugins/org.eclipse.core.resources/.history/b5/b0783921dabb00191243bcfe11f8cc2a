@@ -1,0 +1,31 @@
+package com.liangx.practice.booksystem.mapper;
+
+import com.liangx.practice.booksystem.entity.BorrowedTable;
+import com.liangx.practice.booksystem.entity.BorrowedTableExample;
+import com.liangx.practice.booksystem.entity.BorrowedTableKey;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface BorrowedTableMapper {
+    long countByExample(BorrowedTableExample example);
+
+    int deleteByExample(BorrowedTableExample example);
+
+    int deleteByPrimaryKey(BorrowedTableKey key);
+
+    int insert(BorrowedTable record);
+
+    int insertSelective(BorrowedTable record);
+
+    List<BorrowedTable> selectByExample(BorrowedTableExample example);
+
+    BorrowedTable selectByPrimaryKey(BorrowedTableKey key);
+
+    int updateByExampleSelective(@Param("record") BorrowedTable record, @Param("example") BorrowedTableExample example);
+
+    int updateByExample(@Param("record") BorrowedTable record, @Param("example") BorrowedTableExample example);
+
+    int updateByPrimaryKeySelective(BorrowedTable record);
+
+    int updateByPrimaryKey(BorrowedTable record);
+}

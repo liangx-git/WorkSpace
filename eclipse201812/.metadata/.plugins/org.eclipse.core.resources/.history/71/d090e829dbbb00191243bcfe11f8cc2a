@@ -1,0 +1,134 @@
+package com.liangx.practice.booksystem.entity;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class Book {
+    private String bookId;
+
+    private String bookName;
+
+    private String bookAuthor;
+
+    private String bookType;
+
+    private BigDecimal bookPrice;
+
+    private String bookPress;
+
+    private Date bookPublicDate;
+
+    private Integer bookTotalNumber;
+
+    private Integer bookCurrentNumber;
+
+    private Date bookPurchaseDate;
+
+    private String bookSummary;
+
+    public Book(String bookId, String bookName, String bookAuthor, String bookType, BigDecimal bookPrice, String bookPress, Date bookPublicDate, Integer bookTotalNumber, Integer bookCurrentNumber, Date bookPurchaseDate, String bookSummary) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookType = bookType;
+        this.bookPrice = bookPrice;
+        this.bookPress = bookPress;
+        this.bookPublicDate = bookPublicDate;
+        this.bookTotalNumber = bookTotalNumber;
+        this.bookCurrentNumber = bookCurrentNumber;
+        this.bookPurchaseDate = bookPurchaseDate;
+        this.bookSummary = bookSummary;
+    }
+
+    public Book() {
+        super();
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId == null ? null : bookId.trim();
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName == null ? null : bookName.trim();
+    }
+
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor == null ? null : bookAuthor.trim();
+    }
+
+    public String getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(String bookType) {
+        this.bookType = bookType == null ? null : bookType.trim();
+    }
+
+    public BigDecimal getBookPrice() {
+        return bookPrice;
+    }
+
+    public void setBookPrice(BigDecimal bookPrice) {
+        this.bookPrice = bookPrice;
+    }
+
+    public String getBookPress() {
+        return bookPress;
+    }
+
+    public void setBookPress(String bookPress) {
+        this.bookPress = bookPress == null ? null : bookPress.trim();
+    }
+
+    public Date getBookPublicDate() {
+        return bookPublicDate;
+    }
+
+    public void setBookPublicDate(Date bookPublicDate) {
+        this.bookPublicDate = bookPublicDate;
+    }
+
+    public Integer getBookTotalNumber() {
+        return bookTotalNumber;
+    }
+
+    public void setBookTotalNumber(Integer bookTotalNumber) {
+        this.bookTotalNumber = bookTotalNumber;
+    }
+
+    public Integer getBookCurrentNumber() {
+        return bookCurrentNumber;
+    }
+
+    public void setBookCurrentNumber(Integer bookCurrentNumber) {
+        this.bookCurrentNumber = bookCurrentNumber;
+    }
+
+    public Date getBookPurchaseDate() {
+        return bookPurchaseDate;
+    }
+
+    public void setBookPurchaseDate(Date bookPurchaseDate) {
+        this.bookPurchaseDate = bookPurchaseDate;
+    }
+
+    public String getBookSummary() {
+        return bookSummary;
+    }
+
+    public void setBookSummary(String bookSummary) {
+        this.bookSummary = bookSummary == null ? null : bookSummary.trim();
+    }
+}

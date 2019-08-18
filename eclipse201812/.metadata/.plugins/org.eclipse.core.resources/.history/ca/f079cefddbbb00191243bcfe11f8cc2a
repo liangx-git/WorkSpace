@@ -1,0 +1,32 @@
+package com.liangx.practice.booksystem.entity;
+
+public class BorrowedTableKey {
+    private String bookId;
+
+    private String cardId;
+
+    public BorrowedTableKey(String bookId, String cardId) {
+        this.bookId = bookId;
+        this.cardId = cardId;
+    }
+
+    public BorrowedTableKey() {
+        super();
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId == null ? null : bookId.trim();
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId == null ? null : cardId.trim();
+    }
+}

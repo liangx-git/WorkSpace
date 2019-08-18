@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.LibraryCardMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.LibraryCard">
+    <constructor>
+      <idArg column="card_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="borrowed_book_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="card_created_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="card_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="card_logout_flg" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    card_id, borrowed_book_number, card_created_date, card_expiration_date, card_logout_flg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from library_card
+    where card_id = #{cardId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from library_card
+    where card_id = #{cardId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    insert into library_card (card_id, borrowed_book_number, card_created_date, 
+      card_expiration_date, card_logout_flg)
+    values (#{cardId,jdbcType=CHAR}, #{borrowedBookNumber,jdbcType=INTEGER}, #{cardCreatedDate,jdbcType=DATE}, 
+      #{cardExpirationDate,jdbcType=DATE}, #{cardLogoutFlg,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    insert into library_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="borrowedBookNumber != null">
+        borrowed_book_number,
+      </if>
+      <if test="cardCreatedDate != null">
+        card_created_date,
+      </if>
+      <if test="cardExpirationDate != null">
+        card_expiration_date,
+      </if>
+      <if test="cardLogoutFlg != null">
+        card_logout_flg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        #{cardId,jdbcType=CHAR},
+      </if>
+      <if test="borrowedBookNumber != null">
+        #{borrowedBookNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cardCreatedDate != null">
+        #{cardCreatedDate,jdbcType=DATE},
+      </if>
+      <if test="cardExpirationDate != null">
+        #{cardExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="cardLogoutFlg != null">
+        #{cardLogoutFlg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    update library_card
+    <set>
+      <if test="borrowedBookNumber != null">
+        borrowed_book_number = #{borrowedBookNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cardCreatedDate != null">
+        card_created_date = #{cardCreatedDate,jdbcType=DATE},
+      </if>
+      <if test="cardExpirationDate != null">
+        card_expiration_date = #{cardExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="cardLogoutFlg != null">
+        card_logout_flg = #{cardLogoutFlg,jdbcType=CHAR},
+      </if>
+    </set>
+    where card_id = #{cardId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.LibraryCard">
+    update library_card
+    set borrowed_book_number = #{borrowedBookNumber,jdbcType=INTEGER},
+      card_created_date = #{cardCreatedDate,jdbcType=DATE},
+      card_expiration_date = #{cardExpirationDate,jdbcType=DATE},
+      card_logout_flg = #{cardLogoutFlg,jdbcType=CHAR}
+    where card_id = #{cardId,jdbcType=CHAR}
+  </update>
+</mapper>

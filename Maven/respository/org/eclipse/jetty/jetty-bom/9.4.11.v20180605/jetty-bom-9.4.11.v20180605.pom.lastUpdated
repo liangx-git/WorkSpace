@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Aug 04 16:04:47 CST 2019
+http\://maven.aliyun.com/nexus/content/repositories/central/.error=Could not transfer artifact org.eclipse.jetty\:jetty-bom\:pom\:9.4.11.v20180605 from/to alimaven (http\://maven.aliyun.com/nexus/content/repositories/central/)\: D\:\\WorkSpace\\Maven\\respository\\org\\eclipse\\jetty\\jetty-bom\\9.4.11.v20180605\\aether-3bf9995c-9611-4340-893c-f0f7532a648d-jetty-bom-9.4.11.v20180605.pom-in-progress (\u7CFB\u7EDF\u627E\u4E0D\u5230\u6307\u5B9A\u7684\u6587\u4EF6\u3002)
+@default-alimaven-http\://maven.aliyun.com/nexus/content/repositories/central/.lastUpdated=1564905887642

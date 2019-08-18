@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangx.practice.booksystem.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="com.liangx.practice.booksystem.entity.Book">
+    <constructor>
+      <idArg column="book_id" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="book_author" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="book_press" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="book_public_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="book_total_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="book_current_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="book_purchase_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="book_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    book_id, book_name, book_author, book_type, book_price, book_press, book_public_date, 
+    book_total_number, book_current_number, book_purchase_date, book_summary
+  </sql>
+  <select id="selectByExample" parameterType="com.liangx.practice.booksystem.entity.BookExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where book_id = #{bookId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from book
+    where book_id = #{bookId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liangx.practice.booksystem.entity.BookExample">
+    delete from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liangx.practice.booksystem.entity.Book">
+    insert into book (book_id, book_name, book_author, 
+      book_type, book_price, book_press, 
+      book_public_date, book_total_number, book_current_number, 
+      book_purchase_date, book_summary)
+    values (#{bookId,jdbcType=CHAR}, #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=CHAR}, 
+      #{bookType,jdbcType=CHAR}, #{bookPrice,jdbcType=DECIMAL}, #{bookPress,jdbcType=CHAR}, 
+      #{bookPublicDate,jdbcType=DATE}, #{bookTotalNumber,jdbcType=INTEGER}, #{bookCurrentNumber,jdbcType=INTEGER}, 
+      #{bookPurchaseDate,jdbcType=DATE}, #{bookSummary,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liangx.practice.booksystem.entity.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="bookAuthor != null">
+        book_author,
+      </if>
+      <if test="bookType != null">
+        book_type,
+      </if>
+      <if test="bookPrice != null">
+        book_price,
+      </if>
+      <if test="bookPress != null">
+        book_press,
+      </if>
+      <if test="bookPublicDate != null">
+        book_public_date,
+      </if>
+      <if test="bookTotalNumber != null">
+        book_total_number,
+      </if>
+      <if test="bookCurrentNumber != null">
+        book_current_number,
+      </if>
+      <if test="bookPurchaseDate != null">
+        book_purchase_date,
+      </if>
+      <if test="bookSummary != null">
+        book_summary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        #{bookId,jdbcType=CHAR},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null">
+        #{bookAuthor,jdbcType=CHAR},
+      </if>
+      <if test="bookType != null">
+        #{bookType,jdbcType=CHAR},
+      </if>
+      <if test="bookPrice != null">
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPress != null">
+        #{bookPress,jdbcType=CHAR},
+      </if>
+      <if test="bookPublicDate != null">
+        #{bookPublicDate,jdbcType=DATE},
+      </if>
+      <if test="bookTotalNumber != null">
+        #{bookTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookCurrentNumber != null">
+        #{bookCurrentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookPurchaseDate != null">
+        #{bookPurchaseDate,jdbcType=DATE},
+      </if>
+      <if test="bookSummary != null">
+        #{bookSummary,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liangx.practice.booksystem.entity.BookExample" resultType="java.lang.Long">
+    select count(*) from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update book
+    <set>
+      <if test="record.bookId != null">
+        book_id = #{record.bookId,jdbcType=CHAR},
+      </if>
+      <if test="record.bookName != null">
+        book_name = #{record.bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookAuthor != null">
+        book_author = #{record.bookAuthor,jdbcType=CHAR},
+      </if>
+      <if test="record.bookType != null">
+        book_type = #{record.bookType,jdbcType=CHAR},
+      </if>
+      <if test="record.bookPrice != null">
+        book_price = #{record.bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bookPress != null">
+        book_press = #{record.bookPress,jdbcType=CHAR},
+      </if>
+      <if test="record.bookPublicDate != null">
+        book_public_date = #{record.bookPublicDate,jdbcType=DATE},
+      </if>
+      <if test="record.bookTotalNumber != null">
+        book_total_number = #{record.bookTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookCurrentNumber != null">
+        book_current_number = #{record.bookCurrentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookPurchaseDate != null">
+        book_purchase_date = #{record.bookPurchaseDate,jdbcType=DATE},
+      </if>
+      <if test="record.bookSummary != null">
+        book_summary = #{record.bookSummary,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update book
+    set book_id = #{record.bookId,jdbcType=CHAR},
+      book_name = #{record.bookName,jdbcType=VARCHAR},
+      book_author = #{record.bookAuthor,jdbcType=CHAR},
+      book_type = #{record.bookType,jdbcType=CHAR},
+      book_price = #{record.bookPrice,jdbcType=DECIMAL},
+      book_press = #{record.bookPress,jdbcType=CHAR},
+      book_public_date = #{record.bookPublicDate,jdbcType=DATE},
+      book_total_number = #{record.bookTotalNumber,jdbcType=INTEGER},
+      book_current_number = #{record.bookCurrentNumber,jdbcType=INTEGER},
+      book_purchase_date = #{record.bookPurchaseDate,jdbcType=DATE},
+      book_summary = #{record.bookSummary,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liangx.practice.booksystem.entity.Book">
+    update book
+    <set>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null">
+        book_author = #{bookAuthor,jdbcType=CHAR},
+      </if>
+      <if test="bookType != null">
+        book_type = #{bookType,jdbcType=CHAR},
+      </if>
+      <if test="bookPrice != null">
+        book_price = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPress != null">
+        book_press = #{bookPress,jdbcType=CHAR},
+      </if>
+      <if test="bookPublicDate != null">
+        book_public_date = #{bookPublicDate,jdbcType=DATE},
+      </if>
+      <if test="bookTotalNumber != null">
+        book_total_number = #{bookTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookCurrentNumber != null">
+        book_current_number = #{bookCurrentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookPurchaseDate != null">
+        book_purchase_date = #{bookPurchaseDate,jdbcType=DATE},
+      </if>
+      <if test="bookSummary != null">
+        book_summary = #{bookSummary,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liangx.practice.booksystem.entity.Book">
+    update book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_author = #{bookAuthor,jdbcType=CHAR},
+      book_type = #{bookType,jdbcType=CHAR},
+      book_price = #{bookPrice,jdbcType=DECIMAL},
+      book_press = #{bookPress,jdbcType=CHAR},
+      book_public_date = #{bookPublicDate,jdbcType=DATE},
+      book_total_number = #{bookTotalNumber,jdbcType=INTEGER},
+      book_current_number = #{bookCurrentNumber,jdbcType=INTEGER},
+      book_purchase_date = #{bookPurchaseDate,jdbcType=DATE},
+      book_summary = #{bookSummary,jdbcType=VARCHAR}
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+</mapper>
