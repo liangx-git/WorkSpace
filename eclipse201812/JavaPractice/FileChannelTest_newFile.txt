@@ -1,0 +1,48 @@
+package com.liangx.practice;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+
+public class FileChannelTest {
+
+	public static void main(String[] args) {
+		
+		File file = new File("./src/com/liangx/practice/FileChannelTest_newFile.txt");
+		try(
+			FileOutputStream fos = new FileOutputStream(file);
+			FileInputStream fis = new FileInputStream(file);
+		){
+			//¿½±´ÎÄ¼þ
+			copyFile("./src/com/liangx/practice/FileChannelTest.java", file.getName());
+			System.out.println(file.getName());
+			FileChannel inChannel = fis.getChannel();
+			FileChannel outChannel = fos.getChannel();
+			MappedByteBuffer buffer = inChannel.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+			outChannel.write(buffer);
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void copyFile(String source, String destination) {
+		try(
+			FileInputStream fis = new FileInputStream(source);
+			FileOutputStream fos = new FileOutputStream(destination);
+		) {
+			byte[] buf = new byte[1024];
+			int hasRead = 0;
+			while ((hasRead = fis.read(buf)) > 0) {
+				fos.write(buf, 0, hasRead);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
