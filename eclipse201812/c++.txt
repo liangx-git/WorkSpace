@@ -1,0 +1,21 @@
+c++字符串string和int、double、float相互转换的方法:
+1.使用stringstream:
+    string -> int:
+    	stringstrem ss(str);
+	in ret;
+	ss >> ret;
+    
+    int -> string:
+	string ss;
+	int inputInt;
+	ss << inputInt;
+	ss.str();
+
+2.使用atoi实现stirng转int:
+	string inputStr;
+	int ret = atoi(inputStr);
+  使用sprintf实现int转char *:
+  	int inputInt;
+  	char buf[100]{'\0'};
+	sprintf(buf, "%d", inputInt);
+	string retStr(buf);
